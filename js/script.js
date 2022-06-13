@@ -49,11 +49,9 @@
             const articleTitle = article.querySelector(optTitleSelector).innerHTML;
             const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
-            titleList.innerHTML = titleList.innerHTML + linkHTML;
             html = html + linkHTML;
-            console.log(titleList);
+            titleList.innerHTML = html;
         }
-        titleList.innerHTML = html;
         const links = document.querySelectorAll('.titles a');
         console.log(links);
         
