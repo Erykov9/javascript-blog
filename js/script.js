@@ -82,8 +82,6 @@
   }
   generateTags();
 
-  // TAG FILTER 
-
   function tagClickHandler(event) {
     event.preventDefault();
     const clickedElement = this;
@@ -112,23 +110,12 @@
   }
   addClickListenersToTags();
 
-  // AUTHOR FILTER 
 
   function generateAuthors() {
     const articles = document.querySelectorAll(optArticleSelector);
     const sidebar = document.querySelectorAll('.authors li');
     const authorList = document.querySelector('.authors');
     console.log(authorList);
-    
-    for (let article of articles) {
-      let html = '';
-
-      const authorHTML = article.querySelector(optAuthorSelector);
-      const articleAuthor = article.getAttribute('data-author');
-      const authorLinkHTML = 'by <a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
-      html =  html + authorLinkHTML;
-      authorHTML.innerHTML = html;
-    }
 
     let html1 = '';
     for (let author of sidebar) {
@@ -139,6 +126,17 @@
       html1 = html1 + linkHTML;
       authorList.innerHTML = html1;
     }
+    
+    for (let article of articles) {
+      let html = '';
+
+      const authorHTML = article.querySelector(optAuthorSelector);
+      const articleAuthor = article.getAttribute('data-author');
+      const authorLinkHTML = 'by <a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
+      html =  html + authorLinkHTML;
+      authorHTML.innerHTML = html;
+    }
+    
   }
   generateAuthors();
 
@@ -162,10 +160,10 @@
   }
 
   function addClickListenersToAuthors() {
-    const authorFinder = document.querySelectorAll('.authors a', '.post-author a');
+    const authorFinder = document.querySelectorAll('[href^="#author-"]');
 
     for (let author of authorFinder) {
-      author.addEventListener('click', authorClickHandler)
+      author.addEventListener('click', authorClickHandler);
     }
   }
   addClickListenersToAuthors();
