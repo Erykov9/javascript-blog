@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="sass/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Javascript Blog</title>
 </head>
 <body>
@@ -171,6 +171,24 @@
         </div>
       </div>
 
+      <script id="template-article-link" type="text/x-handlebars-template">
+        <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+      </script>
+
+      <script id="template-tag-article" type="text/x-handlebars-template">
+        <li><a href="#tag-{{ inner }}">{{ tagName }}</a></li>
+      </script>
+
+      <script id="template-author-article" type="text/x-handlebars-template">
+        by <a href="#author-{{ id }}"> {{ author }} </a>
+      </script>
+
+      <script id="template-tag-cloud-link" type="text/x-handlebars-template">
+        {{#each tags}}
+        <li><a href="#tag-{{tag}}" class="{{className}}">{{tag}} ({{count}})</a></li>
+        {{/each}}
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
       <script src="js/script.js"></script>
 </body>
 </html>
